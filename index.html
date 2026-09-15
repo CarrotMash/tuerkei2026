@@ -8,26 +8,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sand:#E7DCC2;
-    --sand-dim:#DCCEA9;
-    --sea-deep:#0B4A50;
-    --sea-mid:#166B6F;
+    --sand:#EDE6D3;
+    --sand-dim:#C9C0A0;
+    --sea-deep:#0C1240;
+    --sea-mid:#1B2B6B;
     --pomegranate:#B23A48;
     --pomegranate-dim:#8E2E3A;
-    --tile-blue:#2B6CA3;
-    --gold:#C9992B;
-    --gold-light:#E4C878;
-    --turquoise:#1E8C8A;
+    --tile-blue:#3E6FB0;
+    --gold:#D4AF37;
+    --gold-light:#F0D584;
+    --turquoise:#2E9CAA;
     --ink:#1C2521;
     --ink-soft:#4A564F;
-    --card:#F4EEDD;
+    --card:#FAF4E3;
     --line:rgba(28,37,33,0.14);
     --radius:2px;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    background-color:var(--sand);
+    background-color:var(--sea-deep);
     color:var(--ink);
     font-family:'Work Sans',sans-serif;
     -webkit-font-smoothing:antialiased;
@@ -38,14 +38,9 @@
   body::before{
     content:"";
     position:fixed;inset:0;
-    background-image:
-      linear-gradient(45deg, var(--tile-blue) 25%, transparent 25%),
-      linear-gradient(-45deg, var(--pomegranate) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, var(--gold) 75%),
-      linear-gradient(-45deg, transparent 75%, var(--turquoise) 75%);
-    background-size:26px 26px;
-    background-position:0 0, 0 13px, 13px -13px, -13px 0px;
-    opacity:0.13;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='1'%3E%3Cpolygon points='50,12 88,50 50,88 12,50'/%3E%3Cpolygon points='26,26 74,26 74,74 26,74'/%3E%3Ccircle cx='50' cy='50' r='16'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='2.4' fill='%23D4AF37'/%3E%3Ccircle cx='0' cy='0' r='1.8' fill='%232E9CAA'/%3E%3Ccircle cx='100' cy='0' r='1.8' fill='%232E9CAA'/%3E%3Ccircle cx='0' cy='100' r='1.8' fill='%232E9CAA'/%3E%3Ccircle cx='100' cy='100' r='1.8' fill='%232E9CAA'/%3E%3C/svg%3E");
+    background-size:100px 100px;
+    opacity:0.4;
     pointer-events:none;
     z-index:0;
   }
@@ -71,7 +66,7 @@
 
   /* header */
   header.hero{
-    background:linear-gradient(160deg,var(--sea-deep) 0%,var(--sea-mid) 55%,var(--turquoise) 100%);
+    background:linear-gradient(160deg,var(--sea-deep) 0%,var(--sea-mid) 100%);
     color:var(--sand);
     padding:28px 0 30px;
     position:relative;
@@ -134,11 +129,11 @@
   }
   nav.tabs button{
     flex:1;background:none;border:none;color:rgba(231,220,194,0.55);
-    font-family:'Work Sans',sans-serif;font-size:10px;font-weight:600;
-    padding:10px 1px 12px;cursor:pointer;letter-spacing:0.005em;
+    font-family:'Work Sans',sans-serif;font-size:9px;font-weight:600;
+    padding:9px 1px 11px;cursor:pointer;letter-spacing:0;
     white-space:nowrap;
   }
-  nav.tabs button .icon{display:block;font-size:16px;margin-bottom:2px;}
+  nav.tabs button .icon{display:block;font-size:15px;margin-bottom:2px;}
   nav.tabs button.active{color:var(--sand);}
   nav.tabs button.active::after{
     content:"";display:block;width:16px;height:2.5px;background:var(--pomegranate);
@@ -151,9 +146,10 @@
   @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
 
   h2.section-title{
-    font-size:21px;margin-bottom:14px;color:var(--sea-deep);
+    font-size:21px;margin-bottom:14px;color:var(--gold-light);
     padding-bottom:8px;border-bottom:3px double var(--gold);
     display:inline-block;
+    text-shadow:0 1px 3px rgba(0,0,0,0.4);
   }
 
   .card{
@@ -168,7 +164,7 @@
     content:"✦";
     position:absolute;top:-13px;right:10px;
     color:var(--gold);font-size:13px;
-    background:var(--sand);
+    background:var(--card);
     padding:0 4px;
   }
   .card h3{font-size:16px;color:var(--sea-deep);margin-bottom:8px;}
@@ -179,13 +175,58 @@
   .kv .k{color:var(--ink-soft);}
   .kv .v{font-weight:600;text-align:right;}
 
-  .flight-block{display:flex;gap:12px;align-items:center;}
-  .flight-code{
-    font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--pomegranate);
-    min-width:64px;
+  .flight-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:2px;}
+  .flight-num{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--pomegranate);letter-spacing:0.02em;}
+  .airline-tag{font-size:11.5px;color:var(--ink-soft);white-space:nowrap;}
+  .flight-route{font-weight:600;font-size:15.5px;margin-top:4px;}
+  .flight-route .arrow{color:var(--turquoise);padding:0 3px;}
+  .flight-meta{font-size:12.5px;color:var(--ink-soft);margin-top:3px;}
+
+  .wx-loading{font-size:13.5px;color:var(--ink-soft);}
+  .wx-scroll{
+    display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;
+    -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;
   }
-  .flight-detail .route{font-weight:600;font-size:14.5px;}
-  .flight-detail .meta{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+  .wx-day{
+    flex:0 0 auto;scroll-snap-align:start;
+    background:var(--sand);border:1.5px solid var(--gold-light);border-radius:2px;
+    padding:8px 10px;text-align:center;min-width:64px;
+  }
+  .wx-day .wx-date{font-size:11px;font-weight:600;color:var(--sea-deep);line-height:1.25;}
+  .wx-day .wx-icon{font-size:20px;margin:4px 0 2px;}
+  .wx-day .wx-temp{font-size:12.5px;font-weight:600;}
+  .wx-day .wx-rain{font-size:10.5px;color:var(--tile-blue);margin-top:2px;}
+  .wx-source{font-size:11px;color:var(--ink-soft);margin-top:8px;}
+  .wx-sea{
+    display:flex;justify-content:space-between;align-items:center;
+    background:rgba(30,140,138,0.1);border:1px solid rgba(30,140,138,0.3);
+    padding:8px 10px;margin-top:10px;font-size:13px;
+  }
+  .wx-sea b{font-family:'Fraunces',serif;font-size:17px;color:var(--turquoise);}
+
+  /* Tools: currency + tip calculator */
+  .conv-row{display:flex;align-items:center;gap:10px;}
+  .conv-row input{
+    flex:1;font-family:'Fraunces',serif;font-size:22px;font-weight:600;
+    border:1.5px solid var(--gold);background:var(--sand);color:var(--ink);
+    padding:8px 10px;border-radius:2px;width:100%;min-width:0;
+  }
+  .conv-row input:focus{outline:2px solid var(--turquoise);outline-offset:1px;}
+  .conv-label{font-size:13px;font-weight:700;color:var(--sea-mid);min-width:38px;}
+  .conv-arrow{text-align:center;font-size:16px;color:var(--gold);margin:6px 0;}
+  .conv-rate{font-size:12px;color:var(--ink-soft);margin-top:10px;text-align:center;}
+
+  .tip-buttons{display:flex;gap:8px;margin:12px 0 10px;}
+  .tip-btn{
+    flex:1;padding:8px 4px;font-size:13px;font-weight:600;cursor:pointer;
+    border:1.5px solid var(--gold);background:var(--sand);color:var(--sea-deep);
+    border-radius:2px;
+  }
+  .tip-btn.active{background:var(--gold);color:var(--sea-deep);}
+  .tip-result{
+    font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--pomegranate);
+    text-align:center;padding:6px 0;
+  }
 
   .badge{
     display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.03em;
@@ -194,8 +235,7 @@
   .badge.warn{background:var(--pomegranate);}
 
   /* checklist */
-  .cat-title{font-size:13px;font-weight:700;color:var(--tile-blue);letter-spacing:0.03em;margin:18px 0 8px;}
-  .cat-title:first-child{margin-top:0;}
+  .cat-title{font-size:13px;font-weight:700;color:var(--turquoise);letter-spacing:0.03em;margin:0 0 8px;}
   ul.checklist{list-style:none;margin:0 0 4px;padding:0;}
   ul.checklist li{
     display:flex;align-items:center;gap:10px;
@@ -215,9 +255,9 @@
   ul.checklist li.done label{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line);}
 
   .progress-wrap{margin:6px 0 18px;}
-  .progress-bar{height:5px;background:var(--sand-dim);width:100%;}
-  .progress-fill{height:100%;background:var(--pomegranate);width:0%;transition:width .3s ease;}
-  .progress-text{font-size:12px;color:var(--ink-soft);margin-top:6px;}
+  .progress-bar{height:5px;background:rgba(240,213,132,0.2);width:100%;}
+  .progress-fill{height:100%;background:var(--gold);width:0%;transition:width .3s ease;}
+  .progress-text{font-size:12px;color:var(--sand-dim);margin-top:6px;}
 
   .tel-btn{
     display:inline-block;margin-top:6px;font-size:13.5px;font-weight:600;
@@ -257,35 +297,40 @@
     <h2 class="section-title">Start</h2>
 
     <div class="card">
-      <h3>Hinflug</h3>
-      <div class="flight-block">
-        <span class="flight-code">PC5068</span>
-        <div class="flight-detail">
-          <div class="route">Berlin-Brandenburg → Antalya</div>
-          <div class="meta">Mo, 12.10.2026 · Abflug 09:25 Uhr · Pegasus Airlines</div>
-        </div>
+      <div class="flight-top">
+        <span class="flight-num">PC5068</span>
+        <span class="airline-tag">Pegasus Airlines</span>
       </div>
+      <h3 style="margin-top:2px;">Hinflug</h3>
+      <div class="flight-route">Berlin-Brandenburg <span class="arrow">✈</span> Antalya</div>
+      <div class="flight-meta">Mo, 12.10.2026 · Abflug 09:25 Uhr</div>
+      <a class="tel-btn" href="https://www.flightradar24.com/data/flights/pc5068" target="_blank" rel="noopener">→ Live auf Flightradar24</a>
     </div>
 
     <div class="card">
-      <h3>Rückflug</h3>
-      <div class="flight-block">
-        <span class="flight-code">XC0192</span>
-        <div class="flight-detail">
-          <div class="route">Antalya → Berlin-Brandenburg</div>
-          <div class="meta">Mi, 21.10.2026 · Abflug 07:30 Uhr · Corendon Airlines</div>
-        </div>
+      <div class="flight-top">
+        <span class="flight-num">XC0192</span>
+        <span class="airline-tag">Corendon Airlines</span>
       </div>
+      <h3 style="margin-top:2px;">Rückflug</h3>
+      <div class="flight-route">Antalya <span class="arrow">✈</span> Berlin-Brandenburg</div>
+      <div class="flight-meta">Mi, 21.10.2026 · Abflug 07:30 Uhr</div>
+      <a class="tel-btn" href="https://www.flightradar24.com/data/flights/xc192" target="_blank" rel="noopener">→ Live auf Flightradar24</a>
       <p style="margin-top:10px;">Frühflug – Transfer zum Flughafen Antalya (ca. 25 km ab Belek, ca. 30–40 Min.) sollte spätestens gegen 4:30–5 Uhr starten.</p>
     </div>
 
     <div class="card">
-      <h3>Wetter in Belek, Mitte/Ende Oktober</h3>
+      <h3>🌤️ Wetter vor Ort</h3>
+      <div id="liveWeather"><p class="wx-loading">Lade aktuelle Vorhersage …</p></div>
+    </div>
+
+    <div class="card">
+      <h3>Klimadurchschnitt Belek, Mitte/Ende Oktober</h3>
       <div class="kv"><span class="k">Tagestemperatur</span><span class="v">ca. 23–27°C</span></div>
       <div class="kv"><span class="k">Nachttemperatur</span><span class="v">ca. 14–19°C</span></div>
       <div class="kv"><span class="k">Wassertemperatur</span><span class="v">ca. 25°C</span></div>
       <div class="kv"><span class="k">Regen</span><span class="v">selten, ~2–4 Tage</span></div>
-      <p style="margin-top:10px;">Zum Baden weiterhin angenehm warm. Abends kühlt es spürbar ab – Zwiebellook einplanen.</p>
+      <p style="margin-top:10px;">Langjähriger Schnitt – zum Baden weiterhin angenehm warm, abends kühlt es spürbar ab. Zwiebellook einplanen.</p>
     </div>
 
     <div class="card">
@@ -302,38 +347,46 @@
       <div class="progress-text" id="progressText">0 von 0 erledigt</div>
     </div>
 
-    <div class="cat-title">Dokumente</div>
-    <ul class="checklist" data-cat="doku">
-      <li><input type="checkbox" id="doku1"><label for="doku1">Personalausweise (alle 5, Gültigkeit geprüft)</label></li>
-      <li><input type="checkbox" id="doku2"><label for="doku2">Flugtickets / Buchungsbestätigung Hotel</label></li>
-      <li><input type="checkbox" id="doku3"><label for="doku3">Auslandskrankenversicherung – Nachweis/Karte</label></li>
-      <li><input type="checkbox" id="doku4"><label for="doku4">Kreditkarte + etwas Bargeld (Lira)</label></li>
-    </ul>
+    <div class="card">
+      <div class="cat-title">Dokumente</div>
+      <ul class="checklist" data-cat="doku">
+        <li><input type="checkbox" id="doku1"><label for="doku1">Personalausweise (alle 5, Gültigkeit geprüft)</label></li>
+        <li><input type="checkbox" id="doku2"><label for="doku2">Flugtickets / Buchungsbestätigung Hotel</label></li>
+        <li><input type="checkbox" id="doku3"><label for="doku3">Auslandskrankenversicherung – Nachweis/Karte</label></li>
+        <li><input type="checkbox" id="doku4"><label for="doku4">Kreditkarte + etwas Bargeld (Lira)</label></li>
+      </ul>
+    </div>
 
-    <div class="cat-title">Baden &amp; Strand</div>
-    <ul class="checklist" data-cat="baden">
-      <li><input type="checkbox" id="baden1"><label for="baden1">Badesachen (mehrfach, für alle)</label></li>
-      <li><input type="checkbox" id="baden2"><label for="baden2">Sonnencreme, hoher LSF</label></li>
-      <li><input type="checkbox" id="baden3"><label for="baden3">Strandtasche, Mikrofaser-Handtuch</label></li>
-      <li><input type="checkbox" id="baden4"><label for="baden4">Badeschuhe / Flip-Flops</label></li>
-      <li><input type="checkbox" id="baden5"><label for="baden5">Sonnenbrille, Kopfbedeckung</label></li>
-    </ul>
+    <div class="card">
+      <div class="cat-title">Baden &amp; Strand</div>
+      <ul class="checklist" data-cat="baden">
+        <li><input type="checkbox" id="baden1"><label for="baden1">Badesachen (mehrfach, für alle)</label></li>
+        <li><input type="checkbox" id="baden2"><label for="baden2">Sonnencreme, hoher LSF</label></li>
+        <li><input type="checkbox" id="baden3"><label for="baden3">Strandtasche, Mikrofaser-Handtuch</label></li>
+        <li><input type="checkbox" id="baden4"><label for="baden4">Badeschuhe / Flip-Flops</label></li>
+        <li><input type="checkbox" id="baden5"><label for="baden5">Sonnenbrille, Kopfbedeckung</label></li>
+      </ul>
+    </div>
 
-    <div class="cat-title">Kleidung</div>
-    <ul class="checklist" data-cat="kleidung">
-      <li><input type="checkbox" id="kl1"><label for="kl1">Leichte Kleidung für tagsüber</label></li>
-      <li><input type="checkbox" id="kl2"><label for="kl2">Dünne Jacke / Pulli für abends</label></li>
-      <li><input type="checkbox" id="kl3"><label for="kl3">Ein etwas festlicheres Outfit (À-la-carte-Restaurant)</label></li>
-      <li><input type="checkbox" id="kl4"><label for="kl4">Bequeme Schuhe für Ausflüge</label></li>
-    </ul>
+    <div class="card">
+      <div class="cat-title">Kleidung</div>
+      <ul class="checklist" data-cat="kleidung">
+        <li><input type="checkbox" id="kl1"><label for="kl1">Leichte Kleidung für tagsüber</label></li>
+        <li><input type="checkbox" id="kl2"><label for="kl2">Dünne Jacke / Pulli für abends</label></li>
+        <li><input type="checkbox" id="kl3"><label for="kl3">Ein etwas festlicheres Outfit (À-la-carte-Restaurant)</label></li>
+        <li><input type="checkbox" id="kl4"><label for="kl4">Bequeme Schuhe für Ausflüge</label></li>
+      </ul>
+    </div>
 
-    <div class="cat-title">Extras</div>
-    <ul class="checklist" data-cat="extra">
-      <li><input type="checkbox" id="ex1"><label for="ex1">Reiseadapter (Turkey: Typ C/F, 230V)</label></li>
-      <li><input type="checkbox" id="ex2"><label for="ex2">Powerbank, Ladekabel</label></li>
-      <li><input type="checkbox" id="ex3"><label for="ex3">Kompaktes Reise-Brettspiel für gemeinsame Abende</label></li>
-      <li><input type="checkbox" id="ex4"><label for="ex4">Reiseapotheke (Sonnenbrand, Magen, Pflaster)</label></li>
-    </ul>
+    <div class="card">
+      <div class="cat-title">Extras</div>
+      <ul class="checklist" data-cat="extra">
+        <li><input type="checkbox" id="ex1"><label for="ex1">Reiseadapter (Turkey: Typ C/F, 230V)</label></li>
+        <li><input type="checkbox" id="ex2"><label for="ex2">Powerbank, Ladekabel</label></li>
+        <li><input type="checkbox" id="ex3"><label for="ex3">Kompaktes Reise-Brettspiel für gemeinsame Abende</label></li>
+        <li><input type="checkbox" id="ex4"><label for="ex4">Reiseapotheke (Sonnenbrand, Magen, Pflaster)</label></li>
+      </ul>
+    </div>
   </section>
 
   <section class="panel" id="panel-hotel">
@@ -343,34 +396,76 @@
       <h3>Limak Atlantis Deluxe Hotel &amp; Resort</h3>
       <p>Direkt am Sandstrand in Belek, ca. 25 km vom Flughafen Antalya entfernt. Familienzimmer, All-Inclusive-Verpflegung ganzjährig.</p>
       <p>Gilt als familienfreundliches Haus mit eigenem Fahrradverleih auf dem Gelände – bei den Teenagern (13, 13, 15) evtl. eine schöne Möglichkeit, sich selbstständig auf dem Resortgelände zu bewegen.</p>
-      <p>Mehrere Pools, À-la-carte-Restaurants (oft mit Voranmeldung über Guest Relations), Pier-Bereich am Strand.</p>
+      <p>5 Pools (innen &amp; außen), Wasserrutschen, Pier-Bereich am Strand, Spa mit Hamam, Sauna und Dampfbad.</p>
     </div>
-    <div class="note">Für die reine Erholungswoche: am besten gleich am ersten Tag bei Guest Relations nach freien À-la-carte-Terminen und ggf. Tennisplätzen fragen – die sind oft schnell ausgebucht.</div>
+
+    <div class="card">
+      <h3>📞 Kontakt</h3>
+      <div class="kv"><span class="k">Adresse</span><span class="v">Kongre Cad. 12/A, Belek, Serik, Antalya</span></div>
+      <div class="kv"><span class="k">Telefon</span><span class="v">+90 242 710 0700</span></div>
+      <a class="tel-btn" href="tel:+902427100700">→ Hotel anrufen</a><br>
+      <a class="tel-btn" href="mailto:atlantis@limakhotels.com" style="margin-top:6px;display:inline-block;">→ E-Mail schreiben</a>
+    </div>
+
+    <div class="card">
+      <h3>🍽️ Restaurants</h3>
+      <p>Haupt-Buffetrestaurant für Frühstück, Mittag- und Abendessen (Show-Cooking). Dazu mehrere Themenrestaurants – Reservierung über Guest Relations, am besten gleich zu Urlaubsbeginn:</p>
+      <div class="kv"><span class="k">Dynasty</span><span class="v">Türkisch · ohne Gebühr</span></div>
+      <div class="kv"><span class="k">La Cucina</span><span class="v">Italienisch · gegen Gebühr</span></div>
+      <div class="kv"><span class="k">El Saguaro</span><span class="v">Mexikanisch · Mai–Okt.</span></div>
+      <div class="kv"><span class="k">Poseidon</span><span class="v">Fisch/Meeresfrüchte · Juni–Okt.</span></div>
+      <p style="margin-top:8px;">Für euren Reisezeitraum (Mitte/Ende Oktober) könnte Poseidon je nach Saisonende knapp werden – am ersten Tag gleich nachfragen.</p>
+    </div>
+
+    <div class="card">
+      <h3>🎾 Sport &amp; Freizeit</h3>
+      <p>Tennis, Tischtennis, Bowling, Billard, Darts, Minigolf, Volleyball, Basketball, Aerobic &amp; Wassergymnastik, Tanzkurse.</p>
+      <p>Wassersport am Strand (Jetski, Bananenboot etc.) wird von externen Anbietern gegen Gebühr angeboten – nicht im All-Inclusive-Paket enthalten.</p>
+      <div class="note" style="margin:10px 0 0;">⚠️ Fitnessstudio und Sauna haben laut Hotelangaben ein Mindestalter von 14 Jahren – für die beiden 13-Jährigen also (noch) nicht zugänglich.</div>
+    </div>
+
+    <div class="card">
+      <h3>🎧 Für Teenager</h3>
+      <p>Spielhalle mit Bowlingbahn, Billard und Arcade-Automaten, Karaoke-Bar, abendliche Disco sowie ein durchgehendes Animationsprogramm mit Shows und Live-Musik.</p>
+      <p>Für alle, die eher Ruhe suchen: Bewertungen beschreiben die Poolbereiche tagsüber als recht musikalisch/lebhaft – an den ruhigeren Rändern von Strand und Pool ist es entspannter.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔍 Geheimtipps aus Foren</h3>
+      <p>Der Linienbus hält direkt vor dem Hotel, fährt etwa alle 30 Minuten ins Zentrum von Belek (ca. 1 € pro Person, 10–15 Minuten) – samstags lohnt sich der Wochenmarkt.</p>
+      <p>Die Zimmer sind unterschiedlich weit renoviert; beim Check-in freundlich nach einem der neueren Zimmer fragen.</p>
+      <p>Das Hauptbuffet wird in Bewertungen unterschiedlich bewertet (mal reichhaltig, mal eintönig) – die Themenrestaurants kommen im Schnitt deutlich besser weg, daher früh reservieren.</p>
+      <p>Taxi ins Zentrum von Belek (ca. 3 km) kostet ungefähr 10 €, nach Antalya (ca. 45–50 km) eher 50 €.</p>
+    </div>
   </section>
 
   <section class="panel" id="panel-ausflug">
     <h2 class="section-title">Ausflüge</h2>
-    <p style="font-size:13.5px;color:var(--ink-soft);margin:-4px 0 16px;">Falls es euch doch mal von der Liege wegzieht – diese Ziele liegen alle in erreichbarer Nähe zu Belek.</p>
+    <p style="font-size:13.5px;color:var(--sand-dim);margin:-4px 0 16px;">Falls es euch doch mal von der Liege wegzieht – diese Ziele liegen alle in erreichbarer Nähe zu Belek.</p>
 
     <div class="card">
       <span class="badge warn">Highlight für alle Altersstufen</span>
       <h3>🎢 The Land of Legends</h3>
       <p>Türkeis größter Freizeit- und Wasserpark, nur ca. 10 Minuten von Belek entfernt. 23 Fahrgeschäfte, über 30 Wasserrutschen, Delfin-Arena – gut für einen vollen Tag mit der ganzen Familie.</p>
+      <a class="tel-btn" href="https://www.thelandoflegends.com/en" target="_blank" rel="noopener">→ Offizielle Webseite</a>
     </div>
 
     <div class="card">
       <h3>🏛️ Aspendos</h3>
       <p>Eines der am besten erhaltenen römischen Amphitheater der Welt, ca. 20 Minuten von Belek. Beeindruckende Akustik – lohnt sich auch für die Teenager.</p>
+      <a class="tel-btn" href="https://de.wikipedia.org/wiki/Aspendos" target="_blank" rel="noopener">→ Hintergrundinfos</a>
     </div>
 
     <div class="card">
       <h3>🏘️ Kaleiçi, Antalya</h3>
       <p>Die osmanische Altstadt Antalyas mit engen Gassen, altem Hafen, Basar und dem Wahrzeichen Yivli Minare. Ca. 40 Minuten Fahrt.</p>
+      <a class="tel-btn" href="https://de.wikipedia.org/wiki/Kaleiçi" target="_blank" rel="noopener">→ Hintergrundinfos</a>
     </div>
 
     <div class="card">
       <h3>🚤 Manavgat-Fluss &amp; Wasserfälle</h3>
       <p>Beliebtes Ziel für eine entspannte Bootstour mit Mittagessen am Fluss, ca. 45 Minuten entfernt.</p>
+      <a class="tel-btn" href="https://de.wikipedia.org/wiki/Manavgat" target="_blank" rel="noopener">→ Hintergrundinfos</a>
     </div>
 
     <div class="note">🧿 Tipp: Ausflüge lassen sich meist direkt über die Hotel-Reiseleitung (Guest Relations) buchen – oft günstiger und unkomplizierter als spontan vor Ort.</div>
@@ -401,7 +496,56 @@
       <div class="kv"><span class="k">Anadolu Krankenhaus Antalya</span><span class="v">+90 242 249 3300</span></div>
     </div>
 
-    <div class="note">Auslandskrankenversicherung mit Rückholschutz vor Abflug prüfen – die gesetzliche Krankenversicherung deckt Behandlungen in der Türkei nicht automatisch ab.</div>
+    <div class="note">Da ihr alle privat krankenversichert seid: Die PKV leistet für Urlaubsreisen meist auch außerhalb Europas, oft für mehrere Wochen bis Monate – ihr bezahlt vor Ort zunächst selbst und reicht Rechnung/Quittungen nach der Rückkehr bei eurer Versicherung ein (Kostenerstattungsprinzip, Belege gut aufbewahren). Eine typische Lücke bleibt der Krankenrücktransport – lohnt sich, vorab beim eigenen Tarif kurz zu prüfen.</div>
+  </section>
+
+  <section class="panel" id="panel-tools">
+    <h2 class="section-title">Tools</h2>
+
+    <div class="card">
+      <h3>💱 Währungsrechner</h3>
+      <div class="conv-row">
+        <input type="number" id="convEur" inputmode="decimal" placeholder="0" value="100">
+        <span class="conv-label">EUR</span>
+      </div>
+      <div class="conv-arrow">⇅</div>
+      <div class="conv-row">
+        <input type="number" id="convTry" inputmode="decimal" placeholder="0">
+        <span class="conv-label">TRY</span>
+      </div>
+      <p class="conv-rate" id="convRate">Lade aktuellen Kurs …</p>
+    </div>
+
+    <div class="card">
+      <h3>🧾 Trinkgeld-Rechner</h3>
+      <div class="conv-row">
+        <input type="number" id="tipBill" inputmode="decimal" placeholder="0" value="500">
+        <span class="conv-label">TRY Rechnung</span>
+      </div>
+      <div class="tip-buttons" id="tipButtons">
+        <button type="button" class="tip-btn" data-pct="5">5 %</button>
+        <button type="button" class="tip-btn active" data-pct="10">10 %</button>
+        <button type="button" class="tip-btn" data-pct="15">15 %</button>
+      </div>
+      <div class="tip-result" id="tipResult">50 TRY Trinkgeld</div>
+      <p style="margin-top:6px;font-size:12.5px;color:var(--ink-soft);">In der Türkei üblich: ca. 5–10 % in Restaurants, sofern nicht schon als Servicegebühr enthalten.</p>
+    </div>
+
+    <div class="card">
+      <h3>🗣️ Ein paar türkische Wörter</h3>
+      <div class="kv"><span class="k">Merhaba</span><span class="v">Hallo</span></div>
+      <div class="kv"><span class="k">Teşekkür ederim</span><span class="v">Danke</span></div>
+      <div class="kv"><span class="k">Lütfen</span><span class="v">Bitte</span></div>
+      <div class="kv"><span class="k">Afiyet olsun</span><span class="v">Guten Appetit</span></div>
+      <div class="kv"><span class="k">Ne kadar?</span><span class="v">Wie viel kostet das?</span></div>
+      <div class="kv"><span class="k">Tuvalet nerede?</span><span class="v">Wo ist die Toilette?</span></div>
+      <div class="kv"><span class="k">Yardım!</span><span class="v">Hilfe!</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🕐 Zeitverschiebung</h3>
+      <p>Die Türkei liegt ganzjährig eine Stunde vor Deutschland (UTC+3 statt UTC+1/+2) – Deutschland stellt Ende Oktober auf Winterzeit um, die Türkei kennt keine Zeitumstellung mehr. Während eures Aufenthalts (12.–21.10.) beträgt der Unterschied konstant <b>+1 Stunde</b>.</p>
+    </div>
   </section>
 
 </main>
@@ -411,6 +555,7 @@
   <button data-panel="panel-pack"><span class="icon">🧳</span>Packliste</button>
   <button data-panel="panel-hotel"><span class="icon">🏨</span>Hotel</button>
   <button data-panel="panel-ausflug"><span class="icon">🗺️</span>Ausflüge</button>
+  <button data-panel="panel-tools"><span class="icon">🧰</span>Tools</button>
   <button data-panel="panel-notfall"><span class="icon">🚑</span>Notfall</button>
 </nav>
 
@@ -486,6 +631,131 @@
     });
   });
   updateProgress();
+
+  // Live weather (Open-Meteo, no API key) — Belek/Kadriye coordinates
+  (function liveWeather(){
+    var wxEl = document.getElementById('liveWeather');
+    if(!wxEl) return;
+    var lat = 36.86, lon = 31.05;
+    var tripStart = new Date('2026-10-12T00:00:00+03:00');
+    var tripEnd = new Date('2026-10-21T23:59:00+03:00');
+    var now = new Date();
+    var daysUntilStart = Math.ceil((tripStart - now) / 86400000);
+
+    if(now > tripEnd){
+      wxEl.innerHTML = '<p class="wx-loading">Die Reise ist vorbei — hoffentlich war das Wetter gut! 🌊</p>';
+      return;
+    }
+    if(daysUntilStart > 16){
+      wxEl.innerHTML = '<p class="wx-loading">Die Live-Vorhersage erscheint hier automatisch, sobald ihr innerhalb von 16 Tagen vor Abflug seid (ab ca. 26. September). Bis dahin gilt der Klimadurchschnitt unten.</p>';
+      return;
+    }
+
+    var icons = {0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',
+      61:'🌧️',63:'🌧️',65:'🌧️',80:'🌦️',81:'🌧️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
+
+    var url = 'https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+
+      '&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
+      '&timezone=Europe%2FIstanbul&forecast_days=16';
+    var seaUrl = 'https://marine-api.open-meteo.com/v1/marine?latitude='+lat+'&longitude='+lon+
+      '&daily=sea_surface_temperature_mean&timezone=Europe%2FIstanbul&forecast_days=16';
+
+    fetch(url).then(function(r){ return r.json(); }).then(function(data){
+      if(!data.daily) throw new Error('no data');
+      var html = '<div class="wx-scroll">';
+      var shown = 0;
+      for(var i=0;i<data.daily.time.length;i++){
+        var d = new Date(data.daily.time[i]+'T12:00:00');
+        if(d < tripStart || d > tripEnd) continue;
+        var code = data.daily.weathercode[i];
+        var icon = icons[code] || '🌤️';
+        var max = Math.round(data.daily.temperature_2m_max[i]);
+        var min = Math.round(data.daily.temperature_2m_min[i]);
+        var rain = data.daily.precipitation_probability_max[i];
+        var wd = d.toLocaleDateString('de-DE',{weekday:'short'});
+        html += '<div class="wx-day"><div class="wx-date">'+wd+'<br>'+d.getDate()+'.'+(d.getMonth()+1)+'.</div>'+
+          '<div class="wx-icon">'+icon+'</div><div class="wx-temp">'+max+'°/'+min+'°</div>'+
+          '<div class="wx-rain">💧'+rain+'%</div></div>';
+        shown++;
+      }
+      html += '</div><p class="wx-source">Live-Vorhersage von Open-Meteo · '+shown+' Tage · aktualisiert bei jedem Laden der Seite</p>';
+      wxEl.innerHTML = html;
+
+      fetch(seaUrl).then(function(r){ return r.json(); }).then(function(sea){
+        if(sea && sea.daily && sea.daily.sea_surface_temperature_mean){
+          var vals = sea.daily.sea_surface_temperature_mean.filter(function(v){return v!=null;});
+          if(vals.length){
+            var avg = Math.round(vals.reduce(function(a,b){return a+b;},0)/vals.length);
+            wxEl.insertAdjacentHTML('beforeend','<div class="wx-sea"><span>🌊 Wassertemperatur (Vorhersage-Schnitt)</span><b>'+avg+'°C</b></div>');
+          }
+        }
+      }).catch(function(){ /* sea data optional, fail silently */ });
+    }).catch(function(){
+      wxEl.innerHTML = '<p class="wx-loading">Live-Vorhersage konnte nicht geladen werden — bitte Internetverbindung prüfen. Der Klimadurchschnitt unten gilt in der Zwischenzeit.</p>';
+    });
+  })();
+
+  // Currency converter EUR <-> TRY (Frankfurter.app, ECB reference rates)
+  (function currencyConverter(){
+    var eurEl = document.getElementById('convEur');
+    var tryEl = document.getElementById('convTry');
+    var rateEl = document.getElementById('convRate');
+    if(!eurEl || !tryEl) return;
+    var rate = null;
+    var lastEdited = 'eur';
+
+    fetch('https://api.frankfurter.app/latest?from=EUR&to=TRY')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        rate = data.rates && data.rates.TRY;
+        if(!rate) throw new Error('no rate');
+        rateEl.textContent = '1 EUR ≈ ' + rate.toFixed(2) + ' TRY (Kurs vom ' + data.date + ')';
+        recalc();
+      })
+      .catch(function(){
+        rateEl.textContent = 'Kurs konnte nicht geladen werden — bitte Internetverbindung prüfen.';
+      });
+
+    function recalc(){
+      if(!rate) return;
+      if(lastEdited === 'eur'){
+        var e = parseFloat(eurEl.value);
+        tryEl.value = isNaN(e) ? '' : (e*rate).toFixed(2);
+      } else {
+        var t = parseFloat(tryEl.value);
+        eurEl.value = isNaN(t) ? '' : (t/rate).toFixed(2);
+      }
+    }
+    eurEl.addEventListener('input', function(){ lastEdited='eur'; recalc(); });
+    tryEl.addEventListener('input', function(){ lastEdited='try'; recalc(); });
+  })();
+
+  // Tip calculator
+  (function tipCalculator(){
+    var billEl = document.getElementById('tipBill');
+    var resultEl = document.getElementById('tipResult');
+    var buttons = document.querySelectorAll('.tip-btn');
+    if(!billEl) return;
+    var pct = 10;
+
+    function recalc(){
+      var bill = parseFloat(billEl.value);
+      if(isNaN(bill)){ resultEl.textContent = '–'; return; }
+      var tip = Math.round(bill * pct / 100);
+      var total = Math.round(bill + tip);
+      resultEl.textContent = tip + ' TRY Trinkgeld · ' + total + ' TRY gesamt';
+    }
+    billEl.addEventListener('input', recalc);
+    buttons.forEach(function(b){
+      b.addEventListener('click', function(){
+        buttons.forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+        pct = parseFloat(b.dataset.pct);
+        recalc();
+      });
+    });
+    recalc();
+  })();
 })();
 </script>
 
