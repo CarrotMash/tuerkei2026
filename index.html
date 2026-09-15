@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Antalya Herbst 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#E7DCC2;
+    --sand-dim:#DCCEA9;
+    --sea-deep:#0B4A50;
+    --sea-mid:#166B6F;
+    --pomegranate:#B23A48;
+    --pomegranate-dim:#8E2E3A;
+    --tile-blue:#2B6CA3;
+    --gold:#C9992B;
+    --gold-light:#E4C878;
+    --turquoise:#1E8C8A;
+    --ink:#1C2521;
+    --ink-soft:#4A564F;
+    --card:#F4EEDD;
+    --line:rgba(28,37,33,0.14);
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background-color:var(--sand);
+    color:var(--ink);
+    font-family:'Work Sans',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    padding-bottom:76px;
+    position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      linear-gradient(45deg, var(--tile-blue) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--pomegranate) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--gold) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--turquoise) 75%);
+    background-size:26px 26px;
+    background-position:0 0, 0 13px, 13px -13px, -13px 0px;
+    opacity:0.13;
+    pointer-events:none;
+    z-index:0;
+  }
+  /* border frame, bazaar-style */
+  .wrap{position:relative;}
+  main.wrap::before, main.wrap::after{
+    content:"";
+    position:fixed;top:0;bottom:76px;width:6px;z-index:5;pointer-events:none;
+    background-image:repeating-linear-gradient(0deg, var(--gold) 0 10px, var(--pomegranate) 10px 20px, var(--turquoise) 20px 30px);
+    opacity:0.55;
+  }
+  main.wrap::before{left:0;}
+  main.wrap::after{right:0;}
+  @media(min-width:560px){ main.wrap::before, main.wrap::after{ display:none; } }
+  header.hero, main, nav.tabs{ position:relative; z-index:1; }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding:0 18px;}
+
+  /* header */
+  header.hero{
+    background:linear-gradient(160deg,var(--sea-deep) 0%,var(--sea-mid) 55%,var(--turquoise) 100%);
+    color:var(--sand);
+    padding:28px 0 30px;
+    position:relative;
+    overflow:visible;
+    border-bottom:3px solid var(--gold);
+  }
+  header.hero .scallops{
+    position:absolute;left:0;right:0;bottom:-13px;height:14px;
+    background-image:radial-gradient(circle at 10px 0, transparent 9px, var(--sea-mid) 9.5px);
+    background-size:20px 14px;
+    background-repeat:repeat-x;
+    filter:drop-shadow(0 2px 0 var(--gold));
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    left:0;right:0;top:0;
+    height:10px;
+    background-image:
+      radial-gradient(circle at 10px 10px, var(--pomegranate) 3.5px, transparent 4px),
+      radial-gradient(circle at 30px 10px, var(--sand) 2px, transparent 2.5px);
+    background-size:40px 20px;
+    opacity:0.7;
+  }
+  .eyebrow-row{display:flex;justify-content:space-between;align-items:baseline;}
+  .place{font-size:13px;letter-spacing:0.04em;color:var(--sand-dim);display:flex;align-items:center;gap:6px;}
+  .fam{font-size:13px;color:var(--sand-dim);}
+  h1.trip-title{font-size:30px;line-height:1.05;margin-top:6px;}
+  .hero-sub{margin-top:8px;font-size:13.5px;color:var(--sand-dim);}
+
+  .clock{
+    display:flex;gap:8px;margin-top:16px;
+  }
+  .clock-box{
+    background:rgba(231,220,194,0.12);
+    border:1.5px solid var(--gold-light);
+    box-shadow:0 0 0 1px rgba(201,153,43,0.25), inset 0 0 8px rgba(201,153,43,0.15);
+    border-radius:2px;
+    padding:8px 4px 6px;
+    text-align:center;
+    flex:1;
+    min-width:0;
+  }
+  .clock-num{
+    font-family:'Fraunces',serif;font-weight:700;font-size:26px;line-height:1;
+    font-variant-numeric:tabular-nums;
+    color:var(--gold-light);
+    text-shadow:0 0 10px rgba(228,200,120,0.5);
+  }
+  .clock-label{font-size:9.5px;letter-spacing:0.06em;color:var(--sand-dim);margin-top:4px;text-transform:uppercase;}
+  .clock-done{font-family:'Fraunces',serif;font-size:20px;padding:10px 0;}
+
+  /* tabs */
+  nav.tabs{
+    position:fixed;bottom:0;left:0;right:0;
+    background:var(--sea-deep);
+    display:flex;
+    z-index:20;
+    border-top:2.5px solid var(--gold);
+  }
+  nav.tabs button{
+    flex:1;background:none;border:none;color:rgba(231,220,194,0.55);
+    font-family:'Work Sans',sans-serif;font-size:10px;font-weight:600;
+    padding:10px 1px 12px;cursor:pointer;letter-spacing:0.005em;
+    white-space:nowrap;
+  }
+  nav.tabs button .icon{display:block;font-size:16px;margin-bottom:2px;}
+  nav.tabs button.active{color:var(--sand);}
+  nav.tabs button.active::after{
+    content:"";display:block;width:16px;height:2.5px;background:var(--pomegranate);
+    margin:4px auto 0;
+  }
+
+  main{padding-top:20px;}
+  section.panel{display:none;}
+  section.panel.active{display:block;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+
+  h2.section-title{
+    font-size:21px;margin-bottom:14px;color:var(--sea-deep);
+    padding-bottom:8px;border-bottom:3px double var(--gold);
+    display:inline-block;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:3px solid var(--gold);
+    padding:16px 16px 17px;
+    margin-bottom:14px;
+    position:relative;
+  }
+  .card::after{
+    content:"✦";
+    position:absolute;top:-13px;right:10px;
+    color:var(--gold);font-size:13px;
+    background:var(--sand);
+    padding:0 4px;
+  }
+  .card h3{font-size:16px;color:var(--sea-deep);margin-bottom:8px;}
+  .card p{margin:0 0 6px;font-size:14.5px;line-height:1.5;color:var(--ink-soft);}
+  .card p:last-child{margin-bottom:0;}
+  .kv{display:flex;justify-content:space-between;gap:10px;font-size:14px;padding:5px 0;border-bottom:1px dashed var(--line);}
+  .kv:last-child{border-bottom:none;}
+  .kv .k{color:var(--ink-soft);}
+  .kv .v{font-weight:600;text-align:right;}
+
+  .flight-block{display:flex;gap:12px;align-items:center;}
+  .flight-code{
+    font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--pomegranate);
+    min-width:64px;
+  }
+  .flight-detail .route{font-weight:600;font-size:14.5px;}
+  .flight-detail .meta{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+
+  .badge{
+    display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.03em;
+    padding:3px 8px;background:var(--sea-mid);color:var(--sand);margin-bottom:8px;
+  }
+  .badge.warn{background:var(--pomegranate);}
+
+  /* checklist */
+  .cat-title{font-size:13px;font-weight:700;color:var(--tile-blue);letter-spacing:0.03em;margin:18px 0 8px;}
+  .cat-title:first-child{margin-top:0;}
+  ul.checklist{list-style:none;margin:0 0 4px;padding:0;}
+  ul.checklist li{
+    display:flex;align-items:center;gap:10px;
+    padding:9px 2px;border-bottom:1px solid var(--line);font-size:14.5px;
+  }
+  ul.checklist li:last-child{border-bottom:none;}
+  ul.checklist input[type=checkbox]{
+    appearance:none;-webkit-appearance:none;width:19px;height:19px;flex:none;
+    border:1.5px solid var(--sea-mid);background:var(--card);cursor:pointer;position:relative;
+  }
+  ul.checklist input[type=checkbox]:checked{background:var(--sea-mid);}
+  ul.checklist input[type=checkbox]:checked::after{
+    content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
+    border:solid var(--sand);border-width:0 2px 2px 0;transform:rotate(45deg);
+  }
+  ul.checklist label{flex:1;cursor:pointer;}
+  ul.checklist li.done label{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line);}
+
+  .progress-wrap{margin:6px 0 18px;}
+  .progress-bar{height:5px;background:var(--sand-dim);width:100%;}
+  .progress-fill{height:100%;background:var(--pomegranate);width:0%;transition:width .3s ease;}
+  .progress-text{font-size:12px;color:var(--ink-soft);margin-top:6px;}
+
+  .tel-btn{
+    display:inline-block;margin-top:6px;font-size:13.5px;font-weight:600;
+    color:var(--sea-deep);text-decoration:none;border-bottom:1.5px solid var(--pomegranate);
+  }
+
+  .note{
+    background:var(--sand-dim);border-left:3px solid var(--pomegranate);
+    padding:10px 12px;font-size:13.5px;color:var(--ink);margin:14px 0;line-height:1.5;
+  }
+  footer.foot{text-align:center;font-size:11.5px;color:var(--ink-soft);padding:26px 0 8px;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="scallops"></div>
+  <div class="wrap">
+    <div class="eyebrow-row">
+      <span class="place">🧿 Belek · Antalya</span>
+      <span class="fam">Die Hasen-Family 🐰</span>
+    </div>
+    <h1 class="trip-title">Herbsturlaub am Mittelmeer</h1>
+    <div class="clock" id="clock">
+      <div class="clock-box"><div class="clock-num" id="cdDays">–</div><div class="clock-label">Tage</div></div>
+      <div class="clock-box"><div class="clock-num" id="cdHours">–</div><div class="clock-label">Std</div></div>
+      <div class="clock-box"><div class="clock-num" id="cdMins">–</div><div class="clock-label">Min</div></div>
+      <div class="clock-box"><div class="clock-num" id="cdSecs">–</div><div class="clock-label">Sek</div></div>
+    </div>
+    <div class="hero-sub" id="heroSub">bis zum Abflug nach Antalya ✈️ · 12.–21. Oktober 2026</div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="panel active" id="panel-start">
+    <h2 class="section-title">Start</h2>
+
+    <div class="card">
+      <h3>Hinflug</h3>
+      <div class="flight-block">
+        <span class="flight-code">PC5068</span>
+        <div class="flight-detail">
+          <div class="route">Berlin-Brandenburg → Antalya</div>
+          <div class="meta">Mo, 12.10.2026 · Abflug 09:25 Uhr · Pegasus Airlines</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Rückflug</h3>
+      <div class="flight-block">
+        <span class="flight-code">XC0192</span>
+        <div class="flight-detail">
+          <div class="route">Antalya → Berlin-Brandenburg</div>
+          <div class="meta">Mi, 21.10.2026 · Abflug 07:30 Uhr · Corendon Airlines</div>
+        </div>
+      </div>
+      <p style="margin-top:10px;">Frühflug – Transfer zum Flughafen Antalya (ca. 25 km ab Belek, ca. 30–40 Min.) sollte spätestens gegen 4:30–5 Uhr starten.</p>
+    </div>
+
+    <div class="card">
+      <h3>Wetter in Belek, Mitte/Ende Oktober</h3>
+      <div class="kv"><span class="k">Tagestemperatur</span><span class="v">ca. 23–27°C</span></div>
+      <div class="kv"><span class="k">Nachttemperatur</span><span class="v">ca. 14–19°C</span></div>
+      <div class="kv"><span class="k">Wassertemperatur</span><span class="v">ca. 25°C</span></div>
+      <div class="kv"><span class="k">Regen</span><span class="v">selten, ~2–4 Tage</span></div>
+      <p style="margin-top:10px;">Zum Baden weiterhin angenehm warm. Abends kühlt es spürbar ab – Zwiebellook einplanen.</p>
+    </div>
+
+    <div class="card">
+      <h3>Einreise</h3>
+      <p>Personalausweis reicht (noch mind. 1 Monat über Rückreise hinaus gültig), kein Visum nötig für den touristischen Aufenthalt.</p>
+      <p>Jedes Kind braucht ein eigenes Reisedokument – der Eintrag im Elternpass wird nicht anerkannt.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-pack">
+    <h2 class="section-title">Packliste</h2>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-text" id="progressText">0 von 0 erledigt</div>
+    </div>
+
+    <div class="cat-title">Dokumente</div>
+    <ul class="checklist" data-cat="doku">
+      <li><input type="checkbox" id="doku1"><label for="doku1">Personalausweise (alle 5, Gültigkeit geprüft)</label></li>
+      <li><input type="checkbox" id="doku2"><label for="doku2">Flugtickets / Buchungsbestätigung Hotel</label></li>
+      <li><input type="checkbox" id="doku3"><label for="doku3">Auslandskrankenversicherung – Nachweis/Karte</label></li>
+      <li><input type="checkbox" id="doku4"><label for="doku4">Kreditkarte + etwas Bargeld (Lira)</label></li>
+    </ul>
+
+    <div class="cat-title">Baden &amp; Strand</div>
+    <ul class="checklist" data-cat="baden">
+      <li><input type="checkbox" id="baden1"><label for="baden1">Badesachen (mehrfach, für alle)</label></li>
+      <li><input type="checkbox" id="baden2"><label for="baden2">Sonnencreme, hoher LSF</label></li>
+      <li><input type="checkbox" id="baden3"><label for="baden3">Strandtasche, Mikrofaser-Handtuch</label></li>
+      <li><input type="checkbox" id="baden4"><label for="baden4">Badeschuhe / Flip-Flops</label></li>
+      <li><input type="checkbox" id="baden5"><label for="baden5">Sonnenbrille, Kopfbedeckung</label></li>
+    </ul>
+
+    <div class="cat-title">Kleidung</div>
+    <ul class="checklist" data-cat="kleidung">
+      <li><input type="checkbox" id="kl1"><label for="kl1">Leichte Kleidung für tagsüber</label></li>
+      <li><input type="checkbox" id="kl2"><label for="kl2">Dünne Jacke / Pulli für abends</label></li>
+      <li><input type="checkbox" id="kl3"><label for="kl3">Ein etwas festlicheres Outfit (À-la-carte-Restaurant)</label></li>
+      <li><input type="checkbox" id="kl4"><label for="kl4">Bequeme Schuhe für Ausflüge</label></li>
+    </ul>
+
+    <div class="cat-title">Extras</div>
+    <ul class="checklist" data-cat="extra">
+      <li><input type="checkbox" id="ex1"><label for="ex1">Reiseadapter (Turkey: Typ C/F, 230V)</label></li>
+      <li><input type="checkbox" id="ex2"><label for="ex2">Powerbank, Ladekabel</label></li>
+      <li><input type="checkbox" id="ex3"><label for="ex3">Kompaktes Reise-Brettspiel für gemeinsame Abende</label></li>
+      <li><input type="checkbox" id="ex4"><label for="ex4">Reiseapotheke (Sonnenbrand, Magen, Pflaster)</label></li>
+    </ul>
+  </section>
+
+  <section class="panel" id="panel-hotel">
+    <h2 class="section-title">Hotel</h2>
+    <div class="card">
+      <span class="badge">All Inclusive</span>
+      <h3>Limak Atlantis Deluxe Hotel &amp; Resort</h3>
+      <p>Direkt am Sandstrand in Belek, ca. 25 km vom Flughafen Antalya entfernt. Familienzimmer, All-Inclusive-Verpflegung ganzjährig.</p>
+      <p>Gilt als familienfreundliches Haus mit eigenem Fahrradverleih auf dem Gelände – bei den Teenagern (13, 13, 15) evtl. eine schöne Möglichkeit, sich selbstständig auf dem Resortgelände zu bewegen.</p>
+      <p>Mehrere Pools, À-la-carte-Restaurants (oft mit Voranmeldung über Guest Relations), Pier-Bereich am Strand.</p>
+    </div>
+    <div class="note">Für die reine Erholungswoche: am besten gleich am ersten Tag bei Guest Relations nach freien À-la-carte-Terminen und ggf. Tennisplätzen fragen – die sind oft schnell ausgebucht.</div>
+  </section>
+
+  <section class="panel" id="panel-ausflug">
+    <h2 class="section-title">Ausflüge</h2>
+    <p style="font-size:13.5px;color:var(--ink-soft);margin:-4px 0 16px;">Falls es euch doch mal von der Liege wegzieht – diese Ziele liegen alle in erreichbarer Nähe zu Belek.</p>
+
+    <div class="card">
+      <span class="badge warn">Highlight für alle Altersstufen</span>
+      <h3>🎢 The Land of Legends</h3>
+      <p>Türkeis größter Freizeit- und Wasserpark, nur ca. 10 Minuten von Belek entfernt. 23 Fahrgeschäfte, über 30 Wasserrutschen, Delfin-Arena – gut für einen vollen Tag mit der ganzen Familie.</p>
+    </div>
+
+    <div class="card">
+      <h3>🏛️ Aspendos</h3>
+      <p>Eines der am besten erhaltenen römischen Amphitheater der Welt, ca. 20 Minuten von Belek. Beeindruckende Akustik – lohnt sich auch für die Teenager.</p>
+    </div>
+
+    <div class="card">
+      <h3>🏘️ Kaleiçi, Antalya</h3>
+      <p>Die osmanische Altstadt Antalyas mit engen Gassen, altem Hafen, Basar und dem Wahrzeichen Yivli Minare. Ca. 40 Minuten Fahrt.</p>
+    </div>
+
+    <div class="card">
+      <h3>🚤 Manavgat-Fluss &amp; Wasserfälle</h3>
+      <p>Beliebtes Ziel für eine entspannte Bootstour mit Mittagessen am Fluss, ca. 45 Minuten entfernt.</p>
+    </div>
+
+    <div class="note">🧿 Tipp: Ausflüge lassen sich meist direkt über die Hotel-Reiseleitung (Guest Relations) buchen – oft günstiger und unkomplizierter als spontan vor Ort.</div>
+  </section>
+
+  <section class="panel" id="panel-notfall">
+    <h2 class="section-title">Notfall</h2>
+
+    <div class="card">
+      <h3>Notrufnummern Türkei</h3>
+      <div class="kv"><span class="k">Ambulanz</span><span class="v">112</span></div>
+      <div class="kv"><span class="k">Polizei</span><span class="v">155</span></div>
+      <div class="kv"><span class="k">Feuerwehr</span><span class="v">110</span></div>
+      <a class="tel-btn" href="tel:112">→ 112 anrufen</a>
+    </div>
+
+    <div class="card">
+      <h3>Deutsches Konsulat Antalya</h3>
+      <p>Çağlayan Mah., Barınaklar Bulv. 54, 07235 Antalya</p>
+      <div class="kv"><span class="k">Dienstzeiten</span><span class="v">+90 242 314 11 01</span></div>
+      <div class="kv"><span class="k">Notfall (außerhalb)</span><span class="v">+90 532 283 36 34</span></div>
+      <a class="tel-btn" href="tel:+905322833634">→ Notfallnummer anrufen</a>
+    </div>
+
+    <div class="card">
+      <h3>Kliniken in der Nähe von Belek</h3>
+      <div class="kv"><span class="k">Anadolu Krankenhaus Belek</span><span class="v">+90 242 725 5000</span></div>
+      <div class="kv"><span class="k">Anadolu Krankenhaus Antalya</span><span class="v">+90 242 249 3300</span></div>
+    </div>
+
+    <div class="note">Auslandskrankenversicherung mit Rückholschutz vor Abflug prüfen – die gesetzliche Krankenversicherung deckt Behandlungen in der Türkei nicht automatisch ab.</div>
+  </section>
+
+</main>
+
+<nav class="tabs">
+  <button class="active" data-panel="panel-start"><span class="icon">☀️</span>Start</button>
+  <button data-panel="panel-pack"><span class="icon">🧳</span>Packliste</button>
+  <button data-panel="panel-hotel"><span class="icon">🏨</span>Hotel</button>
+  <button data-panel="panel-ausflug"><span class="icon">🗺️</span>Ausflüge</button>
+  <button data-panel="panel-notfall"><span class="icon">🚑</span>Notfall</button>
+</nav>
+
+<script>
+(function(){
+  // Tab switching
+  var buttons = document.querySelectorAll('nav.tabs button');
+  var panels = document.querySelectorAll('section.panel');
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      buttons.forEach(function(b){b.classList.remove('active');});
+      panels.forEach(function(p){p.classList.remove('active');});
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.panel).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+
+  // Live countdown to departure — 2026-10-12 09:25 Europe/Berlin
+  var target = new Date('2026-10-12T09:25:00+02:00');
+  var returnTarget = new Date('2026-10-21T07:30:00+03:00');
+  var clockEl = document.getElementById('clock');
+  var heroSub = document.getElementById('heroSub');
+  var dDays=document.getElementById('cdDays'), dHours=document.getElementById('cdHours'),
+      dMins=document.getElementById('cdMins'), dSecs=document.getElementById('cdSecs');
+
+  function pad(n){ return n < 10 ? '0'+n : ''+n; }
+
+  function tick(){
+    var now = new Date();
+    var diff = target - now;
+    if(diff > 0){
+      var d = Math.floor(diff/(1000*60*60*24));
+      var h = Math.floor((diff/(1000*60*60))%24);
+      var m = Math.floor((diff/(1000*60))%60);
+      var s = Math.floor((diff/1000)%60);
+      dDays.textContent = d; dHours.textContent = pad(h);
+      dMins.textContent = pad(m); dSecs.textContent = pad(s);
+      heroSub.textContent = 'bis zum Abflug nach Antalya ✈️ · 12.–21. Oktober 2026';
+    } else if(now < returnTarget){
+      clockEl.innerHTML = '<div class="clock-done">🏖️ Ihr seid schon vor Ort – gute Erholung!</div>';
+      heroSub.textContent = 'Rückflug: 21.10.2026, 07:30 Uhr ab Antalya';
+      clearInterval(timer);
+    } else {
+      clockEl.innerHTML = '<div class="clock-done">✓ Reise beendet</div>';
+      heroSub.textContent = 'Hoffentlich war es schön! 🌊';
+      clearInterval(timer);
+    }
+  }
+  tick();
+  var timer = setInterval(tick, 1000);
+
+  // Checklist persistence
+  var boxes = document.querySelectorAll('ul.checklist input[type=checkbox]');
+  var STORAGE_KEY = 'antalya2026_packliste';
+  var saved = {};
+  try{ saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ saved = {}; }
+
+  function updateProgress(){
+    var total = boxes.length, checked = 0;
+    boxes.forEach(function(b){ if(b.checked) checked++; });
+    document.getElementById('progressFill').style.width = (total? (checked/total*100):0) + '%';
+    document.getElementById('progressText').textContent = checked + ' von ' + total + ' erledigt';
+  }
+
+  boxes.forEach(function(b){
+    if(saved[b.id]) { b.checked = true; b.closest('li').classList.add('done'); }
+    b.addEventListener('change', function(){
+      saved[b.id] = b.checked;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+      b.closest('li').classList.toggle('done', b.checked);
+      updateProgress();
+    });
+  });
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
