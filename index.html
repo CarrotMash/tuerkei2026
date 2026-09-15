@@ -129,11 +129,11 @@
   }
   nav.tabs button{
     flex:1;background:none;border:none;color:rgba(231,220,194,0.55);
-    font-family:'Work Sans',sans-serif;font-size:9px;font-weight:600;
-    padding:9px 1px 11px;cursor:pointer;letter-spacing:0;
+    font-family:'Work Sans',sans-serif;font-size:8.5px;font-weight:600;
+    padding:8px 1px 10px;cursor:pointer;letter-spacing:0;
     white-space:nowrap;
   }
-  nav.tabs button .icon{display:block;font-size:15px;margin-bottom:2px;}
+  nav.tabs button .icon{display:block;font-size:14px;margin-bottom:2px;}
   nav.tabs button.active{color:var(--sand);}
   nav.tabs button.active::after{
     content:"";display:block;width:16px;height:2.5px;background:var(--pomegranate);
@@ -505,7 +505,7 @@
     <div class="card">
       <h3>💱 Währungsrechner</h3>
       <div class="conv-row">
-        <input type="number" id="convEur" inputmode="decimal" placeholder="0" value="100">
+        <input type="number" id="convEur" inputmode="decimal" placeholder="0">
         <span class="conv-label">EUR</span>
       </div>
       <div class="conv-arrow">⇅</div>
@@ -519,7 +519,7 @@
     <div class="card">
       <h3>🧾 Trinkgeld-Rechner</h3>
       <div class="conv-row">
-        <input type="number" id="tipBill" inputmode="decimal" placeholder="0" value="500">
+        <input type="number" id="tipBill" inputmode="decimal" placeholder="0">
         <span class="conv-label">TRY Rechnung</span>
       </div>
       <div class="tip-buttons" id="tipButtons">
@@ -529,17 +529,6 @@
       </div>
       <div class="tip-result" id="tipResult">50 TRY Trinkgeld</div>
       <p style="margin-top:6px;font-size:12.5px;color:var(--ink-soft);">In der Türkei üblich: ca. 5–10 % in Restaurants, sofern nicht schon als Servicegebühr enthalten.</p>
-    </div>
-
-    <div class="card">
-      <h3>🗣️ Ein paar türkische Wörter</h3>
-      <div class="kv"><span class="k">Merhaba</span><span class="v">Hallo</span></div>
-      <div class="kv"><span class="k">Teşekkür ederim</span><span class="v">Danke</span></div>
-      <div class="kv"><span class="k">Lütfen</span><span class="v">Bitte</span></div>
-      <div class="kv"><span class="k">Afiyet olsun</span><span class="v">Guten Appetit</span></div>
-      <div class="kv"><span class="k">Ne kadar?</span><span class="v">Wie viel kostet das?</span></div>
-      <div class="kv"><span class="k">Tuvalet nerede?</span><span class="v">Wo ist die Toilette?</span></div>
-      <div class="kv"><span class="k">Yardım!</span><span class="v">Hilfe!</span></div>
     </div>
 
     <div class="card">
@@ -558,6 +547,61 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-sprache">
+    <h2 class="section-title">Sprache</h2>
+    <p style="font-size:13.5px;color:var(--sand-dim);margin:-4px 0 16px;">Ein paar Brocken Türkisch kommen bei den Locals immer gut an – hier eine Auswahl für Alltag, Restaurant und Notfälle.</p>
+
+    <div class="card">
+      <h3>👋 Begrüßung &amp; Höflichkeit</h3>
+      <div class="kv"><span class="k">Merhaba</span><span class="v">Hallo</span></div>
+      <div class="kv"><span class="k">Günaydın</span><span class="v">Guten Morgen</span></div>
+      <div class="kv"><span class="k">İyi akşamlar</span><span class="v">Guten Abend</span></div>
+      <div class="kv"><span class="k">Nasılsın?</span><span class="v">Wie geht's?</span></div>
+      <div class="kv"><span class="k">İyiyim, teşekkürler</span><span class="v">Mir geht's gut, danke</span></div>
+      <div class="kv"><span class="k">Teşekkür ederim</span><span class="v">Danke</span></div>
+      <div class="kv"><span class="k">Lütfen</span><span class="v">Bitte</span></div>
+      <div class="kv"><span class="k">Evet / Hayır</span><span class="v">Ja / Nein</span></div>
+      <div class="kv"><span class="k">Özür dilerim</span><span class="v">Entschuldigung</span></div>
+      <div class="kv"><span class="k">Güle güle</span><span class="v">Auf Wiedersehen (im Weggehen)</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🍽️ Im Restaurant</h3>
+      <div class="kv"><span class="k">Afiyet olsun</span><span class="v">Guten Appetit</span></div>
+      <div class="kv"><span class="k">Hesap, lütfen</span><span class="v">Die Rechnung, bitte</span></div>
+      <div class="kv"><span class="k">Su</span><span class="v">Wasser</span></div>
+      <div class="kv"><span class="k">Ekmek</span><span class="v">Brot</span></div>
+      <div class="kv"><span class="k">Vejetaryen</span><span class="v">Vegetarisch</span></div>
+      <div class="kv"><span class="k">Acı değil, lütfen</span><span class="v">Nicht scharf, bitte</span></div>
+      <div class="kv"><span class="k">Çok lezzetli!</span><span class="v">Sehr lecker!</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🧭 Unterwegs &amp; Einkaufen</h3>
+      <div class="kv"><span class="k">Ne kadar?</span><span class="v">Wie viel kostet das?</span></div>
+      <div class="kv"><span class="k">Çok pahalı</span><span class="v">Zu teuer</span></div>
+      <div class="kv"><span class="k">Tuvalet nerede?</span><span class="v">Wo ist die Toilette?</span></div>
+      <div class="kv"><span class="k">Plaj nerede?</span><span class="v">Wo ist der Strand?</span></div>
+      <div class="kv"><span class="k">Sağa / Sola</span><span class="v">Rechts / Links</span></div>
+      <div class="kv"><span class="k">Otobüs durağı</span><span class="v">Bushaltestelle</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🚨 Notfall &amp; Hilfe</h3>
+      <div class="kv"><span class="k">Yardım!</span><span class="v">Hilfe!</span></div>
+      <div class="kv"><span class="k">Doktor çağırın!</span><span class="v">Rufen Sie einen Arzt!</span></div>
+      <div class="kv"><span class="k">Polis</span><span class="v">Polizei</span></div>
+      <div class="kv"><span class="k">Kayboldum</span><span class="v">Ich habe mich verirrt</span></div>
+      <div class="kv"><span class="k">Almanca / İngilizce biliyor musunuz?</span><span class="v">Sprechen Sie Deutsch / Englisch?</span></div>
+    </div>
+
+    <div class="card">
+      <h3>🔢 Zahlen 1–10</h3>
+      <div class="kv"><span class="k">bir · iki · üç · dört · beş</span><span class="v">1 · 2 · 3 · 4 · 5</span></div>
+      <div class="kv"><span class="k">altı · yedi · sekiz · dokuz · on</span><span class="v">6 · 7 · 8 · 9 · 10</span></div>
+    </div>
+  </section>
+
 </main>
 
 <nav class="tabs">
@@ -566,6 +610,7 @@
   <button data-panel="panel-hotel"><span class="icon">🏨</span>Hotel</button>
   <button data-panel="panel-ausflug"><span class="icon">🗺️</span>Ausflüge</button>
   <button data-panel="panel-tools"><span class="icon">🧰</span>Tools</button>
+  <button data-panel="panel-sprache"><span class="icon">🗣️</span>Sprache</button>
   <button data-panel="panel-notfall"><span class="icon">🚑</span>Notfall</button>
 </nav>
 
@@ -714,16 +759,42 @@
     var rate = null;
     var lastEdited = 'eur';
 
-    fetch('https://api.frankfurter.app/latest?from=EUR&to=TRY')
-      .then(function(r){ return r.json(); })
+    function setRate(r, dateStr){
+      rate = r;
+      rateEl.textContent = '1 EUR ≈ ' + rate.toFixed(2) + ' TRY' + (dateStr ? ' (Kurs vom ' + dateStr + ')' : '');
+      recalc();
+    }
+
+    // Primary: Frankfurter v2 API (current)
+    fetch('https://api.frankfurter.dev/v2/rate/EUR/TRY')
+      .then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
       .then(function(data){
-        rate = data.rates && data.rates.TRY;
-        if(!rate) throw new Error('no rate');
-        rateEl.textContent = '1 EUR ≈ ' + rate.toFixed(2) + ' TRY (Kurs vom ' + data.date + ')';
-        recalc();
+        var r = data.rate || (data.rates && data.rates.TRY) || (data.quotes && data.quotes.TRY);
+        if(!r) throw new Error('no rate in v2 response');
+        setRate(r, data.date);
       })
       .catch(function(){
-        rateEl.textContent = 'Kurs konnte nicht geladen werden — bitte Internetverbindung prüfen.';
+        // Fallback: legacy Frankfurter v1 API
+        fetch('https://api.frankfurter.app/latest?from=EUR&to=TRY')
+          .then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
+          .then(function(data){
+            var r = data.rates && data.rates.TRY;
+            if(!r) throw new Error('no rate in v1 response');
+            setRate(r, data.date);
+          })
+          .catch(function(){
+            // Second fallback: exchangerate.host
+            fetch('https://api.exchangerate.host/latest?base=EUR&symbols=TRY')
+              .then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
+              .then(function(data){
+                var r = data.rates && data.rates.TRY;
+                if(!r) throw new Error('no rate in exchangerate.host response');
+                setRate(r, data.date);
+              })
+              .catch(function(){
+                rateEl.textContent = 'Kurs konnte gerade nicht geladen werden — bitte später erneut versuchen.';
+              });
+          });
       });
 
     function recalc(){
