@@ -228,11 +228,39 @@
     text-align:center;padding:6px 0;
   }
 
+  /* Translator */
+  #translateInput{
+    width:100%;font-family:'Work Sans',sans-serif;font-size:14.5px;color:var(--ink);
+    border:1.5px solid var(--gold);background:var(--sand);border-radius:2px;
+    padding:8px 10px;margin-top:10px;resize:vertical;min-height:64px;
+  }
+  #translateInput:focus{outline:2px solid var(--turquoise);outline-offset:1px;}
+  #translateBtn{
+    display:block;width:100%;margin-top:10px;padding:9px 4px;
+    font-family:'Work Sans',sans-serif;font-size:13.5px;font-weight:700;letter-spacing:0.02em;
+    border:none;background:var(--gold);color:var(--sea-deep);border-radius:2px;cursor:pointer;
+  }
+  #translateOutput{font-size:14.5px;color:var(--ink);}
+  #translateOutput a{color:var(--sea-deep);font-weight:600;}
+
   .badge{
     display:inline-block;font-size:11px;font-weight:600;letter-spacing:0.03em;
     padding:3px 8px;background:var(--sea-mid);color:var(--sand);margin-bottom:8px;
   }
   .badge.warn{background:var(--pomegranate);}
+
+  .travel-warning{
+    display:none;
+    background:#3A1418;border-top-color:var(--pomegranate);
+    animation:warnPulse 2.5s ease-in-out infinite;
+  }
+  .travel-warning h3{color:var(--gold-light);}
+  .travel-warning p{color:var(--sand);}
+  .travel-warning::after{background:#3A1418;color:var(--gold-light);}
+  @keyframes warnPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(178,58,72,0.5);}
+    50%{box-shadow:0 0 0 6px rgba(178,58,72,0);}
+  }
 
   /* checklist */
   .cat-title{font-size:13px;font-weight:700;color:var(--turquoise);letter-spacing:0.03em;margin:0 0 8px;}
@@ -295,6 +323,11 @@
 
   <section class="panel active" id="panel-start">
     <h2 class="section-title">Start</h2>
+
+    <div class="card travel-warning" id="travelWarning">
+      <h3>📵 Reisetag – Datenroaming beachten!</h3>
+      <p>Um teure Roaming-Kosten zu vermeiden: mobile Daten am Handy deaktivieren oder Flugmodus + Hotel-WLAN nutzen. Details zu den Preisen unter „Tools → Mobilfunk".</p>
+    </div>
 
     <div class="card">
       <div class="flight-top">
@@ -545,18 +578,46 @@
 
     <div class="card">
       <h3>📱 Mobilfunk im Urlaub</h3>
-      <p>Die Türkei zählt bei beiden Anbietern nicht zur EU-Roaming-Zone, sondern zur teureren „Weltzone 3" – die EU-Regel „Roam like at home" gilt hier nicht.</p>
-      <div class="kv"><span class="k">1&amp;1 (Eltern)</span><span class="v">ohne Paket ~0,99 €/MB</span></div>
-      <div class="kv"><span class="k">WinSim (Kinder)</span><span class="v">Preise nicht öffentlich</span></div>
-      <p style="margin-top:8px;">Bei 1&amp;1 lohnt sich vor Abflug ein Datenpaket für Weltzone 3 im Control-Center (z. B. ca. 500 MB für 4,99 € bzw. 1 GB für 9,99 €, Preise vorher prüfen, da sie sich ändern können).</p>
-      <p>WinSim veröffentlicht die Weltzone-3-Preise nicht öffentlich – in der „Mein winSIM"-App unter Tarifdetails nachsehen. Es gibt dort eine automatische Kostenbremse (Berichte nennen ca. 50–60 € pro Abrechnungsmonat), die mobile Daten gegebenenfalls gegen Zubuchung eines weiteren Betrags wieder freischaltet, aber auch dazu führen kann, dass das Datenvolumen bereits nach wenigen MB automatisch gekappt wird, wenn kein Paket gebucht ist. WinSim gehört wie 1&amp;1 zur Drillisch/1&amp;1-Gruppe, die Weltzonen-Einteilung ist bei beiden identisch.</p>
-      <div class="note" style="margin:10px 0 0;">💡 Praktisch: Hotel-WLAN (im Limak Atlantis kostenlos) als Hauptquelle nutzen, mobile Daten nur gezielt für Navigation & Notfälle, und Anrufe nach Hause eher über WhatsApp/FaceTime per WLAN statt klassisch zu telefonieren.</div>
+      <p>Die Türkei zählt bei beiden Anbietern nicht zur EU-Roaming-Zone, sondern zur teureren „Weltzone 3" – die EU-Regel „Roam like at home" gilt hier nicht. Die konkreten Tarife unterscheiden sich zwischen 1&amp;1 und WinSim, daher getrennt aufgeführt – jeweils <b>ohne gebuchtes Auslandspaket</b>:</p>
+
+      <div class="cat-title" style="color:var(--pomegranate);margin-top:14px;">1&amp;1 (Eltern)</div>
+      <div class="kv"><span class="k">Daten-Roaming</span><span class="v">0,99 €/MB</span></div>
+      <div class="kv"><span class="k">Telefonieren (abgehend)</span><span class="v">1,49 €/Min.</span></div>
+      <div class="kv"><span class="k">Telefonieren (eingehend)</span><span class="v">0,69 €/Min.</span></div>
+      <div class="kv"><span class="k">SMS (Versand)</span><span class="v">0,39 €/SMS</span></div>
+      <div class="kv"><span class="k">SMS (Empfang)</span><span class="v">kostenlos</span></div>
+
+      <div class="cat-title" style="color:var(--turquoise);margin-top:16px;">WinSim (Kinder)</div>
+      <p style="font-size:12px;color:var(--ink-soft);margin:-4px 0 8px;">Laut Preisliste „Zusatzleistungen Auslandsverbindungen" der Drillisch Online GmbH (Stand 08.07.2026), Weltzone 3:</p>
+      <div class="kv"><span class="k">Mobile Daten</span><span class="v">0,12 € / 10 kB (≈12 €/MB)</span></div>
+      <div class="kv"><span class="k">Telefonieren (abgehend)</span><span class="v">1,59 €/Min.</span></div>
+      <div class="kv"><span class="k">Telefonieren (eingehend)</span><span class="v">0,69 €/Min.</span></div>
+      <div class="kv"><span class="k">SMS (Versand)</span><span class="v">0,49 €/SMS</span></div>
+      <div class="kv"><span class="k">SMS (Empfang)</span><span class="v">kostenlos</span></div>
+
+      <p style="margin-top:10px;">In beiden Fällen sind eingehende Anrufe (0,69 €/Min.) und eingehende SMS (kostenlos) identisch – bei Daten und abgehender Nutzung liegt WinSim etwas höher als 1&amp;1.</p>
+      <div class="note" style="margin:10px 0 0;">🛡️ Für WinSim ist eine automatische Kostenbremse von <b>59,50 €</b> (50 € netto) pro Abrechnungsmonat für Datenroaming dokumentiert – Datennutzung wird dann automatisch gestoppt, Info per SMS. Ob 1&amp;1 eine identische oder abweichende Kostenbremse hat, lässt sich von hier aus nicht sicher sagen – lohnt sich, kurz im 1&amp;1 Control-Center nachzuschauen. So oder so: Auch 59,50 € sind eine spürbare Rechnung, kein Freifahrtschein.</div>
+      <p style="margin-top:8px;">Anrufe/SMS zwischen euch laufen beide über die Weltzone-3-Sätze, wenn ihr aus der Türkei telefoniert oder simst – WhatsApp/FaceTime per WLAN ist praktisch immer günstiger.</p>
+      <p>Vor Abflug lohnt sich ein Blick ins jeweilige Kundenportal (1&amp;1 Control-Center bzw. „Mein winSIM"-App), ob sich ein Auslandsdatenpaket für den Zeitraum buchen lässt – das drückt den Preis pro MB oft deutlich unter die Standardsätze oben.</p>
+      <div class="note" style="margin:10px 0 0;">💡 Praktisch: Hotel-WLAN (im Limak Atlantis kostenlos) als Hauptquelle nutzen, mobile Daten nur gezielt für Navigation &amp; Notfälle.</div>
     </div>
   </section>
 
   <section class="panel" id="panel-sprache">
     <h2 class="section-title">Sprache</h2>
     <p style="font-size:13.5px;color:var(--sand-dim);margin:-4px 0 16px;">Ein paar Brocken Türkisch kommen bei den Locals immer gut an – hier eine Auswahl für Alltag, Restaurant und Notfälle.</p>
+
+    <div class="card">
+      <h3>🌐 Online-Übersetzer</h3>
+      <div class="tip-buttons" id="translateDir">
+        <button type="button" class="tip-btn active" data-dir="de-tr">Deutsch → Türkisch</button>
+        <button type="button" class="tip-btn" data-dir="tr-de">Türkisch → Deutsch</button>
+      </div>
+      <textarea id="translateInput" rows="3" placeholder="Text eingeben …"></textarea>
+      <button type="button" id="translateBtn">Übersetzen</button>
+      <div id="translateOutput" class="wx-loading" style="margin-top:10px;"></div>
+      <p style="font-size:11px;color:var(--ink-soft);margin-top:8px;">Gedacht für kurze Sätze. Bei längeren Texten oder falls es mal nicht klappt: Link zu Google Translate erscheint automatisch.</p>
+    </div>
 
     <div class="card">
       <h3>👋 Begrüßung &amp; Höflichkeit</h3>
@@ -645,9 +706,16 @@
       dMins=document.getElementById('cdMins'), dSecs=document.getElementById('cdSecs');
 
   function pad(n){ return n < 10 ? '0'+n : ''+n; }
+  var warnEl = document.getElementById('travelWarning');
+  var tripStartDate = new Date(2026,9,12);
+  var tripEndDate = new Date(2026,9,21);
 
   function tick(){
     var now = new Date();
+    if(warnEl){
+      var todayDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      warnEl.style.display = (todayDate >= tripStartDate && todayDate <= tripEndDate) ? 'block' : 'none';
+    }
     var diff = target - now;
     if(diff > 0){
       var d = Math.floor(diff/(1000*60*60*24));
@@ -843,6 +911,50 @@
       });
     });
     recalc();
+  })();
+
+  // Online translator (MyMemory API, free, no key) with Google Translate fallback
+  (function translator(){
+    var input = document.getElementById('translateInput');
+    var btn = document.getElementById('translateBtn');
+    var output = document.getElementById('translateOutput');
+    var dirBtns = document.querySelectorAll('#translateDir .tip-btn');
+    if(!input || !btn) return;
+    var dir = 'de-tr';
+
+    dirBtns.forEach(function(b){
+      b.addEventListener('click', function(){
+        dirBtns.forEach(function(x){ x.classList.remove('active'); });
+        b.classList.add('active');
+        dir = b.dataset.dir;
+      });
+    });
+
+    function googleFallback(text){
+      var sl = dir === 'de-tr' ? 'de' : 'tr';
+      var tl = dir === 'de-tr' ? 'tr' : 'de';
+      var url = 'https://translate.google.com/?sl='+sl+'&tl='+tl+'&text='+encodeURIComponent(text)+'&op=translate';
+      output.innerHTML = 'Direkte Übersetzung nicht verfügbar. <a href="'+url+'" target="_blank" rel="noopener">→ In Google Translate öffnen</a>';
+    }
+
+    btn.addEventListener('click', function(){
+      var text = input.value.trim();
+      if(!text){ output.textContent = 'Bitte zuerst einen Text eingeben.'; return; }
+      if(text.length > 480){
+        googleFallback(text);
+        return;
+      }
+      var pair = dir === 'de-tr' ? 'de|tr' : 'tr|de';
+      output.textContent = 'Übersetze …';
+      fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=' + pair)
+        .then(function(r){ if(!r.ok) throw new Error('http '+r.status); return r.json(); })
+        .then(function(data){
+          var translated = data.responseData && data.responseData.translatedText;
+          if(!translated || /MYMEMORY WARNING/i.test(translated)) throw new Error('no translation');
+          output.textContent = translated;
+        })
+        .catch(function(){ googleFallback(text); });
+    });
   })();
 })();
 </script>
