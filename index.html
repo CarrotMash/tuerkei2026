@@ -276,22 +276,22 @@
   /* checklist */
   .cat-title{font-size:13px;font-weight:700;color:var(--turquoise);letter-spacing:0.03em;margin:0 0 8px;}
   ul.checklist{list-style:none;margin:0 0 4px;padding:0;}
-  ul.checklist li{
-    display:flex;align-items:center;gap:10px;
-    padding:9px 2px;border-bottom:1px solid var(--line);font-size:14.5px;
+  li.pk-item{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    gap:6px 10px;padding:9px 2px;border-bottom:1px solid var(--line);font-size:14px;
   }
-  ul.checklist li:last-child{border-bottom:none;}
-  ul.checklist input[type=checkbox]{
-    appearance:none;-webkit-appearance:none;width:19px;height:19px;flex:none;
-    border:1.5px solid var(--sea-mid);background:var(--card);cursor:pointer;position:relative;
+  li.pk-item:last-child{border-bottom:none;}
+  .pk-label{flex:1 1 170px;}
+  li.pk-item.state-packed .pk-label{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line);}
+  li.pk-item.state-na .pk-label{color:var(--ink-soft);opacity:.65;font-style:italic;}
+  .pk-actions{display:flex;gap:6px;flex:0 0 auto;}
+  .pk-btn{
+    font-family:'Work Sans',sans-serif;font-size:10.5px;font-weight:600;
+    border:1.5px solid var(--gold-light);background:transparent;color:var(--sea-deep);
+    border-radius:2px;padding:4px 7px;cursor:pointer;white-space:nowrap;line-height:1.3;
   }
-  ul.checklist input[type=checkbox]:checked{background:var(--sea-mid);}
-  ul.checklist input[type=checkbox]:checked::after{
-    content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;
-    border:solid var(--sand);border-width:0 2px 2px 0;transform:rotate(45deg);
-  }
-  ul.checklist label{flex:1;cursor:pointer;}
-  ul.checklist li.done label{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line);}
+  .pk-btn.pk-packed.active{background:var(--turquoise);border-color:var(--turquoise);color:#fff;}
+  .pk-btn.pk-na.active{background:var(--pomegranate);border-color:var(--pomegranate);color:#fff;}
 
   .progress-wrap{margin:6px 0 18px;}
   .progress-bar{height:5px;background:rgba(240,213,132,0.2);width:100%;}
@@ -386,6 +386,7 @@
 
   <section class="panel" id="panel-pack">
     <h2 class="section-title">Packliste</h2>
+    <p style="font-size:13.5px;color:var(--sand-dim);margin:-4px 0 4px;">Pro Eintrag: „✅ Gepackt" markiert ihn als erledigt, „🚫 Nicht nötig" blendet ihn als bewusst nicht benötigt aus – beides zählt für den Fortschritt. Nochmal klicken setzt den Eintrag zurück.</p>
     <div class="progress-wrap">
       <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
       <div class="progress-text" id="progressText">0 von 0 erledigt</div>
@@ -394,41 +395,71 @@
     <div class="card">
       <div class="cat-title">Dokumente</div>
       <ul class="checklist" data-cat="doku">
-        <li><input type="checkbox" id="doku1"><label for="doku1">Personalausweise (alle 5, Gültigkeit geprüft)</label></li>
-        <li><input type="checkbox" id="doku2"><label for="doku2">Flugtickets / Buchungsbestätigung Hotel</label></li>
-        <li><input type="checkbox" id="doku3"><label for="doku3">Auslandskrankenversicherung – Nachweis/Karte</label></li>
-        <li><input type="checkbox" id="doku4"><label for="doku4">Kreditkarte + etwas Bargeld (Lira)</label></li>
+        <li class="pk-item" data-id="doku1"><span class="pk-label">Personalausweise (alle 5, Gültigkeit geprüft)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="doku2"><span class="pk-label">Flugtickets / Buchungsbestätigung Hotel</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="doku3"><span class="pk-label">Auslandskrankenversicherung – Nachweis/Karte</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="doku4"><span class="pk-label">Kreditkarte + etwas Bargeld (Lira)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
       </ul>
     </div>
 
     <div class="card">
       <div class="cat-title">Baden &amp; Strand</div>
       <ul class="checklist" data-cat="baden">
-        <li><input type="checkbox" id="baden1"><label for="baden1">Badesachen (mehrfach, für alle)</label></li>
-        <li><input type="checkbox" id="baden2"><label for="baden2">Sonnencreme, hoher LSF</label></li>
-        <li><input type="checkbox" id="baden3"><label for="baden3">Strandtasche, Mikrofaser-Handtuch</label></li>
-        <li><input type="checkbox" id="baden4"><label for="baden4">Badeschuhe / Flip-Flops</label></li>
-        <li><input type="checkbox" id="baden5"><label for="baden5">Sonnenbrille, Kopfbedeckung</label></li>
+        <li class="pk-item" data-id="baden1"><span class="pk-label">Badesachen (mehrfach, für alle)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="baden2"><span class="pk-label">Sonnencreme, hoher LSF</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="baden3"><span class="pk-label">Strandtasche, Mikrofaser-Handtuch</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="baden4"><span class="pk-label">Badeschuhe / Flip-Flops</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="baden5"><span class="pk-label">Sonnenbrille, Kopfbedeckung</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="baden6"><span class="pk-label">Schwimmbrille (optional)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
       </ul>
     </div>
 
     <div class="card">
       <div class="cat-title">Kleidung</div>
       <ul class="checklist" data-cat="kleidung">
-        <li><input type="checkbox" id="kl1"><label for="kl1">Leichte Kleidung für tagsüber</label></li>
-        <li><input type="checkbox" id="kl2"><label for="kl2">Dünne Jacke / Pulli für abends</label></li>
-        <li><input type="checkbox" id="kl3"><label for="kl3">Ein etwas festlicheres Outfit (À-la-carte-Restaurant)</label></li>
-        <li><input type="checkbox" id="kl4"><label for="kl4">Bequeme Schuhe für Ausflüge</label></li>
+        <li class="pk-item" data-id="kl1"><span class="pk-label">Leichte Kleidung für tagsüber</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="kl2"><span class="pk-label">Dünne Jacke / Pulli für abends</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="kl3"><span class="pk-label">Ein etwas festlicheres Outfit (À-la-carte-Restaurant)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="kl4"><span class="pk-label">Bequeme Schuhe für Ausflüge</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="kl5"><span class="pk-label">Unterwäsche &amp; Socken (ausreichend für alle + Reserve)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="kl6"><span class="pk-label">T-Shirts / Oberteile (mehrfach, für alle)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="kl7"><span class="pk-label">Leichte Regenjacke (für kurze Schauer)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
       </ul>
     </div>
 
     <div class="card">
       <div class="cat-title">Extras</div>
       <ul class="checklist" data-cat="extra">
-        <li><input type="checkbox" id="ex1"><label for="ex1">Reiseadapter (Turkey: Typ C/F, 230V)</label></li>
-        <li><input type="checkbox" id="ex2"><label for="ex2">Powerbank, Ladekabel</label></li>
-        <li><input type="checkbox" id="ex3"><label for="ex3">Kompaktes Reise-Brettspiel für gemeinsame Abende</label></li>
-        <li><input type="checkbox" id="ex4"><label for="ex4">Reiseapotheke (Sonnenbrand, Magen, Pflaster)</label></li>
+        <li class="pk-item" data-id="ex1"><span class="pk-label">Reiseadapter (Turkey: Typ C/F, 230V)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="ex2"><span class="pk-label">Powerbank, Ladekabel</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="ex3"><span class="pk-label">Kompaktes Reise-Brettspiel für gemeinsame Abende</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="ex4"><span class="pk-label">Reiseapotheke (Sonnenbrand, Magen, Pflaster)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="ex5"><span class="pk-label">Persönliche Notfallmedikamente / Ersatzbrille (falls jemand das braucht)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="ex6"><span class="pk-label">Kopfhörer (für Flug &amp; Hotel)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="ex7"><span class="pk-label">Tablets / E-Reader + Ladekabel</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="ex8"><span class="pk-label">Kamera inkl. Ladegerät (optional)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="cat-title">🎾 Sport &amp; Freizeit vor Ort</div>
+      <ul class="checklist" data-cat="sport">
+        <li class="pk-item" data-id="sp1"><span class="pk-label">Turnsachen &amp; Sportschuhe (Fitness, Beachvolleyball etc.)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="sp2"><span class="pk-label">Wiederbefüllbare Trinkflaschen</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="sp3"><span class="pk-label">Bücher / Kartenspiele für gemeinsame Abende</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="cat-title">🏠 Vor Abreise (zuhause)</div>
+      <ul class="checklist" data-cat="zuhause">
+        <li class="pk-item" data-id="zh1"><span class="pk-label">Blumen &amp; Pflanzen versorgen (gießen lassen)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="zh2"><span class="pk-label">Haustierbetreuung organisiert</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="zh3"><span class="pk-label">Rollläden programmiert / Zeitschaltuhr Licht</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="zh4"><span class="pk-label">Fenster &amp; Türen geprüft, abgeschlossen</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="zh5"><span class="pk-label">Elektrogeräte vom Netz (Stand-by vermeiden)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="zh6"><span class="pk-label">Mülltonne rausgestellt / Nachbarn informiert</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
+        <li class="pk-item" data-id="zh7"><span class="pk-label">Diebstahlschutz (Nachbarn informiert, Post leeren lassen)</span><span class="pk-actions"><button type="button" class="pk-btn pk-packed">✅ Gepackt</button><button type="button" class="pk-btn pk-na">🚫 Nicht nötig</button></span></li>
       </ul>
     </div>
   </section>
@@ -773,27 +804,48 @@
   tick();
   var timer = setInterval(tick, 1000);
 
-  // Checklist persistence
-  var boxes = document.querySelectorAll('ul.checklist input[type=checkbox]');
-  var STORAGE_KEY = 'antalya2026_packliste';
+  // Packliste persistence (zweistufig: gepackt / nicht nötig)
+  var pkItems = document.querySelectorAll('li.pk-item');
+  var STORAGE_KEY = 'antalya2026_packliste_v2';
   var saved = {};
   try{ saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ saved = {}; }
 
-  function updateProgress(){
-    var total = boxes.length, checked = 0;
-    boxes.forEach(function(b){ if(b.checked) checked++; });
-    document.getElementById('progressFill').style.width = (total? (checked/total*100):0) + '%';
-    document.getElementById('progressText').textContent = checked + ' von ' + total + ' erledigt';
+  function applyPkState(li, state){
+    li.classList.remove('state-packed','state-na');
+    li.querySelector('.pk-packed').classList.remove('active');
+    li.querySelector('.pk-na').classList.remove('active');
+    if(state === 'packed'){
+      li.classList.add('state-packed');
+      li.querySelector('.pk-packed').classList.add('active');
+    } else if(state === 'na'){
+      li.classList.add('state-na');
+      li.querySelector('.pk-na').classList.add('active');
+    }
   }
 
-  boxes.forEach(function(b){
-    if(saved[b.id]) { b.checked = true; b.closest('li').classList.add('done'); }
-    b.addEventListener('change', function(){
-      saved[b.id] = b.checked;
+  function updateProgress(){
+    var total = pkItems.length, done = 0;
+    pkItems.forEach(function(li){ if(saved[li.dataset.id]) done++; });
+    var fill = document.getElementById('progressFill');
+    var text = document.getElementById('progressText');
+    if(fill) fill.style.width = (total? (done/total*100):0) + '%';
+    if(text) text.textContent = done + ' von ' + total + ' erledigt';
+  }
+
+  pkItems.forEach(function(li){
+    var id = li.dataset.id;
+    applyPkState(li, saved[id]);
+    var packedBtn = li.querySelector('.pk-packed');
+    var naBtn = li.querySelector('.pk-na');
+    function setState(newState){
+      var next = (saved[id] === newState) ? null : newState;
+      if(next){ saved[id] = next; } else { delete saved[id]; }
+      applyPkState(li, next);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
-      b.closest('li').classList.toggle('done', b.checked);
       updateProgress();
-    });
+    }
+    packedBtn.addEventListener('click', function(){ setState('packed'); });
+    naBtn.addEventListener('click', function(){ setState('na'); });
   });
   updateProgress();
 
